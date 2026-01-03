@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Cabeçalho Simplificado -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+                <div class="checkout-steps">
+                    <span class="step active">1. Carrinho</span>
+                    <span class="step active">2. Pagamento</span>
+                    <span class="step">3. Confirmação</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Página de Checkout -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-grid">
+                <!-- Formulário de Checkout -->
+                <div class="checkout-form">
+                    <h2>Informações de Faturação</h2>
+                    
+                    <form id="checkoutForm" onsubmit="processCheckout(event)">
+                        <div class="form-group">
+                            <label for="fullName">Nome Completo </label>
+                            <input type="text" id="fullName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email </label>
+                            <input type="email" id="email" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Telefone </label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nif">NIF</label>
+                                <input type="text" id="nif">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Morada </label>
+                            <input type="text" id="address" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Cidade </label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode">Código Postal </label>
+                                <input type="text" id="postalCode" placeholder="0000-000" required>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 2rem;">Método de Pagamento</h3>
+                        
+                        <div class="payment-methods">
+                            <label class="payment-method">
+                                <input type="radio" name="payment" value="card" checked>
+                                <div class="payment-option">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="2" y="5" width="20" height="14" rx="2" stroke-width="2"/>
+                                        <path d="M2 10h20" stroke-width="2"/>
+                                    </svg>
+                                    <span>Cartão de Crédito/Débito</span>
+                                </div>
+                            </label>
+
+                            <label class="payment-method">
+                                <input type="radio" name="payment" value="mbway">
+                                <div class="payment-option">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="5" y="2" width="14" height="20" rx="2" stroke-width="2"/>
+                                        <path d="M12 18h.01" stroke-width="2"/>
+                                    </svg>
+                                    <span>MB WAY</span>
+                                </div>
+                            </label>
+
+                            <label class="payment-method">
+                                <input type="radio" name="payment" value="paypal">
+                                <div class="payment-option">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path d="M12 8v8M8 12h8" stroke-width="2"/>
+                                    </svg>
+                                    <span>PayPal</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1.5rem;">
+                            <label class="checkbox-label">
+                                <input type="checkbox" required>
+                                <span>Aceito os <a href="termos.html">Termos de Uso</a> e <a href="privacidade.html">Política de Privacidade</a></span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-large" style="width: 100%; margin-top: 1.5rem;">
+                            Finalizar Compra
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Resumo do Pedido -->
+                <div class="order-summary">
+                    <h3>Resumo do Pedido</h3>
+                    
+                    <div class="summary-items" id="summaryItems">
+                        <!-- Itens serão inseridos via JavaScript -->
+                    </div>
+
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">€0,00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>IVA (23%):</span>
+                            <span id="iva">€0,00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="total">€0,00</span>
+                        </div>
+                    </div>
+
+                    <div class="trust-badges-checkout">
+                        <div class="trust-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2"/>
+                            </svg>
+                            <span>Pagamento 100% Seguro</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path d="M12 6v6l4 2" stroke-width="2"/>
+                            </svg>
+                            <span>Entrega Instantânea</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

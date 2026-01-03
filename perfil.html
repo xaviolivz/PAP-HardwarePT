@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ... existing header ... -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="6" fill="currentColor"/>
+                        <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                    </svg>
+                    <span>HardwarePT</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Início</a>
+                    <a href="produtos.html">Produtos</a>
+                    <a href="suporte.html">Suporte</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="login-btn" onclick="window.location.href='perfil.html'">Meu Perfil</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 40px 0;">
+        <div style="display: grid; grid-template-columns: 250px 1fr; gap: 30px;">
+            <!-- Sidebar do Perfil -->
+            <aside class="profile-sidebar">
+                <div style="background: white; padding: 20px; border-radius: 8px;">
+                    <h3>Meu Perfil</h3>
+                    <img src="/placeholder-user.jpg" alt="Avatar" style="width: 100%; border-radius: 8px; margin: 20px 0;">
+                    <nav style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#perfil" style="padding: 10px; background: #667eea; color: white; border-radius: 5px; text-align: center; text-decoration: none;">Informações</a>
+                        <a href="#pedidos" style="padding: 10px; background: #f0f0f0; border-radius: 5px; text-align: center; text-decoration: none;">Meus Pedidos</a>
+                        <a href="#endereco" style="padding: 10px; background: #f0f0f0; border-radius: 5px; text-align: center; text-decoration: none;">Endereços</a>
+                        <a href="#licencas" style="padding: 10px; background: #f0f0f0; border-radius: 5px; text-align: center; text-decoration: none;">Minhas Licenças</a>
+                        <button onclick="logout()" style="padding: 10px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">Sair</button>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Conteúdo Principal -->
+            <main>
+                <div id="perfil-content" style="background: white; padding: 30px; border-radius: 8px;">
+                    <h2>Minhas Informações</h2>
+                    <form onsubmit="atualizarPerfil(event)" style="margin-top: 20px;">
+                        <div class="form-group">
+                            <label>Nome Completo:</label>
+                            <input type="text" id="nome" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="email" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone:</label>
+                            <input type="tel" id="telefone" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div class="form-group">
+                            <label>Morada:</label>
+                            <input type="text" id="morada" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <button type="submit" class="btn-primary">Guardar Alterações</button>
+                    </form>
+                </div>
+
+                <div id="pedidos-content" style="background: white; padding: 30px; border-radius: 8px; margin-top: 20px; display: none;">
+                    <h2>Meus Pedidos</h2>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <thead>
+                            <tr style="background: #f9f9f9;">
+                                <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Número</th>
+                                <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Data</th>
+                                <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Total</th>
+                                <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pedidos-list"></tbody>
+                    </table>
+                </div>
+
+                <div id="licencas-content" style="background: white; padding: 30px; border-radius: 8px; margin-top: 20px; display: none;">
+                    <h2>Minhas Licenças</h2>
+                    <p>As suas licenças ativas serão listadas aqui.</p>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <thead>
+                            <tr style="background: #f9f9f9;">
+                                <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Produto</th>
+                                <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Chave de Licença</th>
+                                <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Data de Ativação</th>
+                                <th style="padding: 10px; text-align: left; border-bottom: 2px solid #ddd;">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="licencas-list"></tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </main>
+
+    <!-- ... existing footer ... -->
+    <footer class="footer" style="margin-top: 50px;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para software original.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Load profile data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarPerfil();
+        });
+
+        function carregarPerfil() {
+            const perfil = JSON.parse(localStorage.getItem('utilizador') || '{}');
+            if (perfil.nome) {
+                document.getElementById('nome').value = perfil.nome;
+                document.getElementById('email').value = perfil.email;
+                document.getElementById('telefone').value = perfil.telefone || '';
+                document.getElementById('morada').value = perfil.morada || '';
+            }
+        }
+
+        function atualizarPerfil(e) {
+            e.preventDefault();
+            const perfil = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                morada: document.getElementById('morada').value
+            };
+            localStorage.setItem('utilizador', JSON.stringify(perfil));
+            alert('Perfil atualizado com sucesso!');
+        }
+
+        function logout() {
+            localStorage.removeItem('utilizador');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

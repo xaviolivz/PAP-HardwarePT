@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Compras - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ... existing header ... -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="6" fill="currentColor"/>
+                        <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                    </svg>
+                    <span>HardwarePT</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Início</a>
+                    <a href="produtos.html">Produtos</a>
+                    <a href="suporte.html">Suporte</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 40px 0;">
+        <h1>Minhas Compras</h1>
+        
+        <div style="background: white; padding: 30px; border-radius: 8px; margin-top: 20px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: #f9f9f9; border-bottom: 2px solid #ddd;">
+                        <th style="padding: 15px; text-align: left;">Número do Pedido</th>
+                        <th style="padding: 15px; text-align: left;">Data</th>
+                        <th style="padding: 15px; text-align: left;">Total</th>
+                        <th style="padding: 15px; text-align: left;">Status</th>
+                        <th style="padding: 15px; text-align: left;">Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="compras-list"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer" style="margin-top: 50px;">
+        <div class="container">
+            <p>&copy; 2025 HardwarePT. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarCompras();
+        });
+
+        function carregarCompras() {
+            const compras = JSON.parse(localStorage.getItem('minhasCompras') || '[]');
+            const tbody = document.getElementById('compras-list');
+            
+            if (compras.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="padding: 20px; text-align: center;">Nenhuma compra realizada</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = compras.map(compra => `
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 15px;">${compra.numero}</td>
+                    <td style="padding: 15px;">${compra.data}</td>
+                    <td style="padding: 15px;">€${compra.total.toFixed(2)}</td>
+                    <td style="padding: 15px;"><span style="background: #e8f5e9; color: #2e7d32; padding: 5px 10px; border-radius: 3px;">${compra.status}</span></td>
+                    <td style="padding: 15px;"><a href="detalhes-compra.html?id=${compra.id}" style="color: #667eea;">Ver Detalhes</a></td>
+                </tr>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Compra - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="6" fill="currentColor"/>
+                        <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                    </svg>
+                    <span>HardwarePT</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Início</a>
+                    <a href="minhas-compras.html">Minhas Compras</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 40px 0;">
+        <h1>Detalhes da Compra</h1>
+        
+        <div id="detalhes-compra" style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px;">
+            <div style="background: white; padding: 30px; border-radius: 8px;">
+                <h2>Itens da Compra</h2>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                    <thead>
+                        <tr style="background: #f9f9f9; border-bottom: 2px solid #ddd;">
+                            <th style="padding: 10px; text-align: left;">Produto</th>
+                            <th style="padding: 10px; text-align: left;">Qtd</th>
+                            <th style="padding: 10px; text-align: left;">Preço</th>
+                            <th style="padding: 10px; text-align: left;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itens-list"></tbody>
+                </table>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 8px; height: fit-content;">
+                <h3>Resumo</h3>
+                <div id="resumo-compra" style="margin-top: 20px;">
+                    <!-- Resumo será carregado via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" style="margin-top: 50px;">
+        <div class="container">
+            <p>&copy; 2025 HardwarePT. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

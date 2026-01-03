@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Confirmado - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Cabeçalho Simplificado -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Página de Confirmação -->
+    <section class="confirmation-section">
+        <div class="container">
+            <div class="confirmation-box">
+                <div class="success-icon">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#22c55e"/>
+                        <path d="M9 12l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#22c55e"/>
+                    </svg>
+                </div>
+
+                <h1>Pedido Confirmado!</h1>
+                <p class="confirmation-message">Obrigado pela sua compra. O seu pedido foi processado com sucesso.</p>
+
+                <div class="order-details">
+                    <div class="order-detail-row">
+                        <span>Número do Pedido:</span>
+                        <strong id="orderNumber"></strong>
+                    </div>
+                    <div class="order-detail-row">
+                        <span>Data:</span>
+                        <strong id="orderDate"></strong>
+                    </div>
+                    <div class="order-detail-row">
+                        <span>Email:</span>
+                        <strong id="orderEmail"></strong>
+                    </div>
+                    <div class="order-detail-row">
+                        <span>Total:</span>
+                        <strong id="orderTotal"></strong>
+                    </div>
+                </div>
+
+                <div class="confirmation-info">
+                    <h3>O que acontece agora?</h3>
+                    <ul>
+                        <li>Receberá um email de confirmação com os detalhes do pedido</li>
+                        <li>As chaves de licença serão enviadas para o seu email em poucos minutos</li>
+                        <li>Pode consultar o estado do pedido na sua área de cliente</li>
+                        <li>Se tiver dúvidas, contacte o nosso suporte</li>
+                    </ul>
+                </div>
+
+                <div class="confirmation-actions">
+                    <a href="index.html" class="btn-primary">Voltar à Página Inicial</a>
+                    <a href="produtos.html" class="btn-secondary">Continuar a Comprar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para software original com entrega instantânea.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="produtos.html">Todos os Produtos</a></li>
+                        <li><a href="index.html#categorias">Categorias</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="suporte.html">Centro de Ajuda</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HardwarePT. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
